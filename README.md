@@ -133,7 +133,7 @@ Telcom Customer Churn/
 │   ├── Total Charges vs Churn.png
 │   └── total_charges_churn.png
 └── Documentation/
-    └── Telecom_Customer_Churn.pptx
+    └── Telecom_Customer_Churn.pdf
 ```
 
 ## Author
