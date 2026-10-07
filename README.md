@@ -1,4 +1,4 @@
-# Telecom Customer Churn Analysis
+# Telecom Subscriber Attrition Pattern Discovery
 
 Exploratory data analysis of customer demographics, service usage, contract details, payment behavior, tenure, and billing information to examine patterns associated with telecom customer churn.
 
