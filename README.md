@@ -67,10 +67,6 @@ These are descriptive results from this dataset and should not be interpreted as
 
 ![Contract Type vs Customer Churn](Visualizations/contract_churn.png)
 
-### Tenure Distribution by Churn
-
-![Tenure Distribution by Churn](Visualizations/tenure_distribution_by_churn.png)
-
 ### Monthly Charges vs Customer Churn
 
 ![Monthly Charges vs Customer Churn](Visualizations/monthly_charges_churn.png)
