@@ -5,7 +5,7 @@ Exploratory data analysis of customer demographics, service usage, contract deta
 ## Project Overview
 
 - **Industry:** Telecommunications
-- **Problem statement:** Telecom companies lose revenue when customers discontinue their services. This project examines customer data to identify segments associated with churn and inform customer-retention planning.
+- **Problem statement:** Telecom companies lose revenue when customers discontinue their services. This project examines customer data to identify segments associated with churn and inform customer-retention planning. 
 - **Proposed analysis:** Explore how churn relates to customer characteristics, services, contract type, payment method, tenure, and charges.
 - **Dataset:** Telco customer churn dataset (`Dataset/raw_dataset.csv`)
 - **Dataset source:** [Hugging Face — scikit-learn/churn-prediction](https://huggingface.co/datasets/scikit-learn/churn-prediction/tree/main)
