@@ -23,6 +23,15 @@ except ImportError:
 
 VISUALIZATION_DIR = PROJECT_ROOT / "Visualizations"
 REPORT_PATH = PROJECT_ROOT / "Documentation" / "Project_Report.pdf"
+IMPORTANT_PLOT_FILENAMES = (
+    "customer_churn_distribution.png",
+    "contract_churn.png",
+    "tenure_churn_boxplot.png",
+    "monthly_charges_churn.png",
+    "internet_service_churn.png",
+    "payment_method_churn.png",
+    "correlation_matrix.png",
+)
 
 sns.set_theme(style="whitegrid")
 
@@ -189,7 +198,18 @@ def create_visualizations(data: pd.DataFrame) -> list[Path]:
     fig.tight_layout()
     paths.append(_save_figure(fig, "correlation_matrix.png"))
 
-    return paths
+    important_paths = filter_important_chart_paths(paths)
+    important_filenames = {path.name for path in important_paths}
+    for path in VISUALIZATION_DIR.glob("*.png"):
+        if path.name not in important_filenames:
+            path.unlink()
+    return important_paths
+
+
+def filter_important_chart_paths(chart_paths: list[Path]) -> list[Path]:
+    """Keep the seven most useful charts for the visualization folder and report."""
+    paths_by_name = {path.name: path for path in chart_paths}
+    return [paths_by_name[filename] for filename in IMPORTANT_PLOT_FILENAMES]
 
 
 def create_report(data: pd.DataFrame, chart_paths: list[Path]) -> Path:
@@ -197,7 +217,6 @@ def create_report(data: pd.DataFrame, chart_paths: list[Path]) -> Path:
     REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
     summary = summarize_dataset(data)
     churn_rates = {column: churn_rate_by(data, column) for column in ("Contract", "InternetService")}
-
     with PdfPages(REPORT_PATH) as pdf:
         fig, ax = plt.subplots(figsize=(8.27, 11.69))
         ax.axis("off")
@@ -215,13 +234,13 @@ def create_report(data: pd.DataFrame, chart_paths: list[Path]) -> Path:
             f"- Two-year contract churn rate: {churn_rates['Contract'].loc['Two year', 'churn_rate']:.1%}",
             "",
             "The patterns shown are descriptive associations, not evidence of causation.",
-            "Review the charts on the following pages for tenure, category, and correlation detail.",
+            "Review the selected charts on the following pages for churn, contract, tenure, billing, service, payment, and correlation detail.",
         ]
         ax.text(0.08, 0.92, "\n".join(lines), va="top", fontsize=13, linespacing=1.5)
         pdf.savefig(fig, bbox_inches="tight")
         plt.close(fig)
 
-        for chart_path in chart_paths[:4]:
+        for chart_path in chart_paths:
             image = plt.imread(chart_path)
             fig, ax = plt.subplots(figsize=(11, 7))
             ax.imshow(image)

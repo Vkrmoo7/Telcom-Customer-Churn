@@ -27,7 +27,9 @@ This is descriptive exploratory analysis. The observed relationships do not esta
 
 ### Data preparation
 
-The cleaning script trims text fields, converts `TotalCharges` to numeric values, fills blank charge values with zero, converts `tenure` to numeric, and removes exact duplicate rows. The notebook reports 7,043 rows and 21 columns in the cleaned dataset, with no duplicate or missing rows in its checks.
+- The cleaning script trims text fields and converts `TotalCharges` and `tenure` to numeric values.
+- Blank `TotalCharges` values are filled with zero, and exact duplicate rows are removed.
+- The notebook reports 7,043 rows and 21 columns in the cleaned dataset, with no duplicate or missing rows in its checks.
 
 ## Data Analysis & Visualization
 
@@ -38,6 +40,8 @@ The notebook and visualization script include:
 - Tenure distribution and tenure-by-churn comparisons
 - Monthly and total charges compared by churn status
 - Correlation analysis of numeric customer measures and churn
+
+The visualization script keeps seven key charts in `Visualizations/`: churn distribution, contract churn, tenure by churn, monthly charges by churn, internet service by churn, payment method by churn, and the correlation matrix. Other PNG plots in that folder are removed when the script runs.
 
 ## Key Insights
 
@@ -89,7 +93,7 @@ The cleaning script writes `Dataset/cleaned_dataset.csv`. The visualization scri
 ## Project Folder Structure
 
 ```text
-Telcom Customer Churn/
+Telecom Subscriber Attrition Pattern Discovery/
 ├── README.md
 ├── Dataset/
 │   ├── raw_dataset.csv
@@ -102,36 +106,14 @@ Telcom Customer Churn/
 │   ├── data_visualization.py
 │   └── exploratory_analysis.py
 ├── Visualizations/
-│   ├── churn.png
-│   ├── Contract type vs Churn.png
 │   ├── contract_churn.png
 │   ├── correlation_matrix.png
 │   ├── customer_churn_distribution.png
-│   ├── dependents_churn.png
-│   ├── Gender vs Churn.png
-│   ├── gender_churn.png
-│   ├── Heatmap.png
-│   ├── Internet Service vs Churn.png
 │   ├── internet_service_churn.png
-│   ├── Monthly Charges vs Churn.png
 │   ├── monthly_charges_churn.png
-│   ├── multiple_lines_churn.png
-│   ├── online_security_churn.png
-│   ├── Partner vs Churn.png
-│   ├── partner_churn.png
-│   ├── Payment Method vs Churn.png
 │   ├── payment_method_churn.png
-│   ├── phone_service_churn.png
-│   ├── Senior Citizen vs Churn.png
-│   ├── senior_churn.png
-│   ├── streaming_services_churn.png
-│   ├── tech_support_churn.png
-│   ├── Tenure vs Churn.png
-│   ├── Tenure(months).png
-│   ├── tenure_churn_boxplot.png
-│   ├── tenure_distribution_by_churn.png
-│   ├── Total Charges vs Churn.png
-│   └── total_charges_churn.png
+│   └──tenure_churn_boxplot.png
+│   
 └── Documentation/
     └── Telecom_Customer_Churn.pptx
 ```
